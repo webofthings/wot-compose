@@ -241,7 +241,7 @@
     </p>
 
     <p>
-        While the three integration patterns described below need to be taken into account it is worth noting that the
+        While the three integration patterns described below need to be taken into account, it is worth noting that the
         requirements and model apply regardless of the integration pattern of choice.
     </p>
 
@@ -251,7 +251,7 @@
         <p>
             In the most straightforward case, a <a>Web Thing</a> is simply a Web API that <a>Clients</a>
             send requests to. In some cases, the <a>Client</a> and the <a>Web Thing</a> can be on the same network or on
-            different networks. In both cases, you are sending the same request to a <a>Web Thing</a>, the only
+            different networks. In both cases, you are sending the same request to a <a>Web Thing</a>. The only
             difference is the URL to which you are sending the request (and obviously how the <a>Web Thing</a> gets the message).
         </p>
         <figure>
@@ -478,7 +478,7 @@
             <p>
                 If possible, every <a>Web Thing</a> SHOULD implement the <a href="#web-things-model">Web Things
                 Model</a>. It is not essential to use it for a device to be part of the Web of Things, but implementing
-                it will lead to higher degree of interoperability.
+                it will lead to a higher degree of interoperability.
 
             </p>
 
@@ -503,8 +503,7 @@
             <h2>R1.5 – A <a>Web Thing</a> SHOULD provide a default human-readable documentation</h2>
 
             <p>
-                To interact with a <a>Web Thing</a>, a Client needs to know what resources are available on the Web
-                Thing, what they refer to (what is the type/nature of the resources), and how to interact with them. The
+                To interact with a <a>Web Thing</a>, a Client needs to know how to use a Web Thing. The
                 format of the API documentation is left to implementers, but should describe the resources offered, the
                 verbs they support, the payloads accepted and returned, and possible status codes that can be returned
                 and when.
@@ -519,8 +518,7 @@
         <h2>Level 2 – MAY</h2>
 
         <p>
-            A <a>Web Thing</a> MAY support these rules, but are not expected to. It depends on the capabilities of the
-            devices and other implementation aspects.
+            A <a>Web Thing</a> MAY support these rules, but is not expected to. It depends on the device capabilities and other implementation aspects.
         </p>
 
         <section>
@@ -536,8 +534,8 @@
             <h2>R2.2 – A <a>Web Thing</a> MAY provide additional representation mechanisms (RDF, XML, JSON-LD)</h2>
 
             <p>
-                A <a>Web Thing</a> MAY provide additional representations of its data and descriptions. JSON being the
-                only mandatory representation, the rest of the formats are up to the implementers if needed for additional purposes. The discovery of additional representation SHOULD be supported via HTTP content-negotiation [[!content-negotiation]].
+                A <a>Web Thing</a> MAY provide additional representations of its data and descriptions. JSON is the
+                only mandatory representation. Additional formats are up to the implementers if needed for additional purposes. The discovery of additional representation SHOULD be supported via HTTP content-negotiation [[!content-negotiation]].
             </p>
         </section>
 
@@ -546,7 +544,7 @@
             <p>
                 A <a>Web Thing</a> MAY expose a  <abbr
                     title="User Interface">UI</abbr> in HTML, CSS and JavaScript. For example, the <abbr
-                    title="User Interface">UI</abbr> may be a HTML widget that could be used to integrate the <a>Web
+                    title="User Interface">UI</abbr> may be a HTML widget to integrate the <a>Web
                 Thing</a> in dashboard environments.
             </p>
         </section>
@@ -578,7 +576,7 @@
     </p>
 
     <p>
-        An <a>Extended Web Thing</a> MUST create a URL endpoint for all the resources that it exposes, including itself.  The JSON representation of an extended Web Thing must contain the <code>id</code>, field with its URL as value. Relative URLs are to be resolved against the URL of the resource that includes them. Implementers are encouraged to create a logical tree structure for resources and to use relative URLs to keep JSON payloads short, for instance:
+        An <a>Extended Web Thing</a> MUST create a URL endpoint for all the resources that it exposes, including itself. Relative URLs are to be resolved against the URL of the resource that includes them. Implementers are encouraged to create a logical tree structure for resources and to use relative URLs to keep JSON payloads short, for instance:
     </p>
     <table>
         <thead>
@@ -728,9 +726,11 @@
         </p>
 
         <h3>Pagination</h3>
-        Requests on things of a gateway, on properties that store the history of value changes or on executed actions return many items will be paginated to 30 items by default. You can specify any further page to be returned using the ?page parameter. You can also set a custom page size up to 100 with the ?perPage parameter.
+        Requests on things of a gateway, on properties that store the history of value changes or on executed actions return many items will be paginated to 30 items by default. You can specify any further page to be returned using the ?page parameter. For example, set a custom page size up to 100 with the ?perPage parameter with:
 
         <code>GET {wt}/properties/acceleration?page=3&amp;perPage=100</code>
+
+
         Extra pagination data is sent in response headers.
 
         <pre class="example" title="Extra pagination data is sent in response headers">
@@ -776,7 +776,7 @@
         <p>
             A resource may link to a number of sub-resources. To enable the discovery of these sub-resources (as
             required by the <abbr title="Hypermedia as the Engine of Application State">HATEOAS</abbr> constraint of the
-            REST application architecture), an <a>Extended Web Thing</a> SHOULD expose the sub-resources associated with
+            REST application architecture), an <a>Extended Web Thing</a> SHOULD expose  sub-resources associated with
             a given resource using the HTTP <code>Link</code> header field [[!RFC5988]].
         </p>
 
@@ -845,7 +845,7 @@
                 <td>External Resource</td>
             </tr>
             <tr>
-                <td><code>_&lt;customLink&gt;</code></td>
+                <td><code>&lt;_customRelType&gt;</code></td>
                 <td>A link to a custom resource.</td>
                 <td>Custom Resource</td>
             </tr>
@@ -854,7 +854,7 @@
 
         <p>
             An <a>Extended Web Thing</a> MAY use custom relation types using URLs as described in [[!RFC5988]].
-            As a convention, custom relation types names use a underscore <code>_</code> prefix.
+            As a convention, custom relation types start with an underscore <code>_</code>.
         </p>
 
         <p>
@@ -945,7 +945,7 @@
         </pre>
 
         <p>
-            A <code>GET</code> on any resource of a Web Thing should return the list of all related resources as "Link" HTTP headers, which allows to use the same standard model regardless of the representation chosen. This is an example of the headers returned after a <code>GET {wt}/</code> on the root URL of a Web Thing:
+            A <code>GET</code> request on any resource of a Web Thing should return the list of all related resources as "Link" HTTP headers, which allows to use the same standard model regardless of the representation chosen. This is an example of the headers returned after a <code>GET {wt}/</code> on the root URL of a Web Thing:
         </p>
 
         <pre class="example" title="Links in the HTTP Header">
@@ -973,7 +973,7 @@
         </p>
 
         <p>
-            The following fields MAY be used to describe a value:
+            The following fields MAY be used to describe a <code>values</code> object:
         </p>
         <table>
             <thead>
@@ -1056,8 +1056,8 @@
           }
         </pre>
         <p>
-            The value name <code>timestamp</code> is reserved. An <a>Extended Web Thing</a> MUST append a <code>timestamp</code>
-            set to the current date and time whenever it creates a value unless that <code>timestamp</code> is already
+            The value name <code>timestamp</code> is reserved. An <a>Extended Web Thing</a> MUST append a <code>timestamp</code>,
+            set to the current date and time, whenever it creates a value unless that <code>timestamp</code> is already
             provided. The <code>timestamp</code> field follows the ISO8601 notation [[!ISO8601]]. The
             <code>createdAt</code> is different from <code>timestamp</code> because it used to refer when a resource has
             been created (server side information only), whereas the <code>timestamp</code> indicates when a value
@@ -1074,9 +1074,7 @@
             <p>
                 Ideally, an <a>Extended Web Thing</a> SHOULD support all end-points. The letters <code>D,G,C</code> refer to <a href="#web-things-integration-patterns"></a> and is here as an indication of which type of integration would typically implement these resources. A <code>D</code> means that the resource should be implemented on Web Things using the the <a>Direct</a> integration pattern, a <code>G</code> means the resource should be implemented when using the <a>Gateway</a> integration pattern, a <code>C</code> means the resource should be implemented when using the <a>Cloud</a> integration pattern.
 
-                The target column in the table
-                below refers to <a href="#web-things-integration-patterns"></a> and is here as an indication of which
-                type of Thing would typically implement and allow clients to access these end points.
+
             </p>
 
             <p class="note">
