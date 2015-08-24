@@ -1198,12 +1198,12 @@
             </p>
 
             <p>
-                The <dfn>Thing URL</dfn> is either the root URL of the API or, in the case of a proxy for other Things,
-                the result of resolving the <code>id</code> returned in the representation of the <a>Things</a>
+                The Web <dfn>Thing URL</dfn> is either the root URL of the API or, in the case of a proxy for other Web Things,
+                the result of resolving the <code>id</code> returned in the representation of the Web <a>Things</a>
                 resource.
             </p>
             <section>
-                <h2>Retrieve a Thing</h2>
+                <h2>Retrieve a Web Thing</h2>
 
                 <p>
                     In response to an HTTP <code>GET</code> request on the root URL of a <code>Thing</code>, an <a>Extended Web Thing</a> MUST return an object that its representation.
@@ -1238,13 +1238,13 @@
             </pre>
             </section>
             <section>
-                <h2>Update a Thing</h2>
+                <h2>Update a Web Thing</h2>
 
                 <p>
-                    In response to an HTTP <code>PUT</code> request on a <a>Thing URL</a> with a Thing object as
+                    In response to an HTTP <code>PUT</code> request on a Web <a>Thing URL</a> with a Web Thing object as
                     request body, an <a>Extended Web Thing</a> MUST either reject the request with the appropriate
                     status code (e.g. because the <a>Client</a> is unauthenticated or because the <a>Thing</a> is
-                    read-only) or store the provided value(s) by updating the <a>Thing</a>. Partial updates
+                    read-only) or store the provided value(s) by updating the Web <a>Thing</a>. Partial updates
                     are authorized and result in updating the fields that were provided in the request body.
                 </p>
             <pre class="example" title="Update my super great car">
@@ -1284,7 +1284,7 @@
                         In response to an HTTP <code>GET</code> request on the destination URL of a <code>model</code>
                         link, an <a>Extended Web Thing</a> MUST return an object containing the model of the Thing.
                     </p>
-            <pre class="example" title="Model of a Thing">
+            <pre class="example" title="Model of a Web Thing">
                 --&gt; REQUEST
                 GET {wt}/model
 
