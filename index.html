@@ -149,7 +149,7 @@
         <li>
             <strong>Web Things Model</strong>. Once a Web Thing follows the conventions defined above, it is then
             capable to read and exchange data with any other entities of the Web of Things. However, it does not mean it
-            can “understand” what the object is, what data or services it offers, etc. Therefore, the second component
+            can “understand” what the object is, what data or services it offers, etc. Therefore, the third component
             of this specification proposes RESTful Web protocol with a set of resources, data models and payload syntax that Web Thing and applications should follow. Respecting these requirements turns a Web
             Thing into an Extended Web Thing. Implementing semantic extensions (e.g., via [[JSON-LD]] and <a href="http://schema.org">schema.org</a>) turns the Extended Web Thing into a Semantic Web Thing.
         </li>
@@ -177,7 +177,7 @@
         </dd>
         <dt><dfn data-lt="Extended Web Things">Extended Web Thing</dfn></dt>
         <dd>
-            An <a>Extended Web Thing</a> that also supports the REST API and data model defined in this specification,
+            An <a>Extended Web Thing</a> is a <a>Web Thing</a> that additionally supports the REST API and data model defined in this specification,
             thus enabling its automatic inclusion in more complex systems.
             <p>An <a>Extended Web Thing</a> conforms to this specification if it follows the statements defined in <a
             href="#web-things-requirements"></a> and <a href="#web-things-model"></a>.</p>
@@ -235,7 +235,7 @@
     </p>
 
     <section>
-        <h2><dfn>Direct</dfn> connectivity</h2>
+        <h2><dfn>Direct</dfn> Connectivity</h2>
 
         <p>
             In the most straightforward case, a <a>Web Thing</a> is simply a Web API that <a>Clients</a>
@@ -252,11 +252,11 @@
     </section>
 
     <section>
-        <h2><dfn>Gateway</dfn> proxied connectivity</h2>
+        <h2><dfn>Gateway</dfn>-Based Connectivity</h2>
 
         <p>
-            Gateway based connectivity is used when a Thing cannot offer a Web API directly. In this case an
-            intermediate, the gateway, exposes a Web API on its behalf, therefore acting as a proxy (or gateway
+            Gateway-based connectivity is used when a Thing cannot offer a Web API directly. In this case an
+            intermediate <a>Web Thing</a> - the gateway - exposes a Web API on the Thing's behalf. The Web Thing therefore acts as a proxy for the Thing (or gateway
             depending on the complexity/layer of the translation).
         </p>
         <figure>
@@ -268,10 +268,10 @@
     </section>
 
     <section>
-        <h2><dfn>Cloud</dfn> proxied connectivity</h2>
+        <h2><dfn>Cloud</dfn>-Based Connectivity</h2>
 
         <p>
-            This third case is similar to <a href="#gateway-proxied-connectivity"></a>. However, in this case the gateway
+            This third case is similar to <a href="#gateway-based-connectivity"></a>. However, in this case the gateway
             is a cloud service and not another device in situ.
         </p>
         <figure>
@@ -396,7 +396,7 @@
             <h2>R0.5 – A <a>Web Thing</a> MUST support JSON as default representation</h2>
 
             <p>
-                A <a>Web Thing</a> MUST always accept a valid JSON document [[!RFC7159]] as payload for request and
+                A <a>Web Thing</a> MUST always accept a valid JSON document [[!RFC7159]] as input payload for requests and
                 always return a JSON representation when requested. If no <code>Accept:</code> HTTP header is specified
                 in the request (or if the format is unknown or not supported), the <a>Web Thing</a> SHOULD return an
                 appropriate error code, but it also MAY return JSON as default. Fields in JSON objects should follow the camelCase convention starting with a lowerCase letter (e.g., backColor) or a special character (e.g., _customRelation).
@@ -1430,7 +1430,7 @@
                         are authorized and result in updating the fields that were provided in the request body.
 
                     <p class="note">
-                        Usually, the model will be hardcoded in the device and generally cannot be altered by clients. If Web Things is hosted on a cloud service, the model can be updated by sending an HTTP <code>PUT</code> request to the same URL, with the new model document in the request body.
+                        Usually, the model will be hardcoded in the device and generally cannot be altered by clients. If the Web Thing is hosted on a cloud service, the model can be updated by sending an HTTP <code>PUT</code> request to the same URL, with the new model document in the request body.
                     </p>
                 </section>
             </section>
@@ -1439,8 +1439,7 @@
 
                 <p>
                     A <a>Property</a> keeps track of a set of variables about a device (its location, the temperature
-                    sensor
-                    reading, etc.).
+                    sensor reading, etc.).
                 </p>
 
                 <p>
@@ -1757,7 +1756,7 @@
                         status code or queue a task to run the action and return the status of that action in a <code>201
                         Created</code> response. The action may not run immediately. The <code>Location</code> HTTP
                         header
-                        identifies the URL to use to pull for updates on the action's status.
+                        identifies the URL to use to retrieve the most recent update on the action's status.
                     </p>
 
                     <p class="note">
