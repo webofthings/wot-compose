@@ -224,7 +224,7 @@
 
     <p>
         Some physical entities might not expose a Web API themselves for various reasons (e.g., a ZigBee sensor node, or
-        an heart rate monitor accessible over Bluetooth only), in which case they are not <a>Web
+        a heart rate monitor accessible over Bluetooth only), in which case they are not <a>Web
         Things</a> as such, but they can use another <a>Web Thing</a> as a proxy or gateway to provide a Web API for
         them, therefore turning them into Web Things.
     </p>
@@ -241,7 +241,7 @@
             In the most straightforward case, a <a>Web Thing</a> is simply a Web API that <a>Clients</a>
             send requests to. In some cases, the <a>Client</a> and the <a>Web Thing</a> can be on the same network or on
             different networks. In both cases, you are sending the same request to a <a>Web Thing</a>, the only
-            difference is the URL to which you are sending the request (and obviously how the lamp gets the message).
+            difference is the URL to which you are sending the request (and obviously how the <a>Web Thing</a> gets the message).
         </p>
         <figure>
             <img src="integration-direct.png"
@@ -668,8 +668,8 @@
             </tr>
             <tr>
                 <td><code>customFields</code></td>
-                <td>{"key":"value",...}</td>
-                <td>A JSON object with key-value pairs to store custom information about this resource.</td>
+                <td>Object</td>
+                <td>A JSON object with key-value pairs to store custom information about this resource (e.g. {"key":"value",...}).</td>
             </tr>
             <tr>
                 <td><code>links</code></td>
@@ -719,7 +719,7 @@
         </p>
 
         <h3>Pagination</h3>
-        Requests that on things of a gateway, on properties that store the history of value changes or on executed actions return many items will be paginated to 30 items by default. You can specify any further page to be returned using the ?page parameter. You can also set a custom page size up to 100 with the ?perPage parameter.
+        Requests on things of a gateway, on properties that store the history of value changes or on executed actions return many items will be paginated to 30 items by default. You can specify any further page to be returned using the ?page parameter. You can also set a custom page size up to 100 with the ?perPage parameter.
 
 
         <code>GET {wt}/properties/acceleration?page=3&amp;perPage=100</code>
@@ -1658,7 +1658,7 @@
                         In response to an HTTP <code>GET</code> request on the destination URL of an
                         <code>actions</code>
                         link exposed by a resource, an <a>Extended Web Thing</a> MUST return an array of <a>Action</a>
-                        descriptions that the initial resource may achieve.
+                        descriptions that the initial resource may perform.
                     </p>
             <pre class="example" title="List of actions">
               --&gt; REQUEST
@@ -1904,7 +1904,7 @@
 
             <section>
                 <h2><dfn>Subscriptions Resource</dfn></h2>
-                <p>All resources can be subscribed to but in particular, an <a>Extended Web Thing</a> SHOULD enable subscriptions to <a>Actions</a> and <a>Properties</a>. Subscriptions allows for a <a>Client</a> to be notified via a push event whenever the state of an observed resources changes.</p>
+                <p>All resources can be subscribed to but in particular, an <a>Extended Web Thing</a> SHOULD enable subscriptions to <a>Actions</a> and <a>Properties</a>. Subscriptions allows for a <a>Client</a> to be notified via a push event whenever the state of an observed resource changes.</p>
 
                 <p>
                     The <dfn>Subscription resource</dfn> allows to list current subscriptions to resources as well as cancelling a subscription. Such a resource is accessible via the root URL of the <a>Extended Web Thing</a>.</p>
