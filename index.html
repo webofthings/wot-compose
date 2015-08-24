@@ -53,6 +53,10 @@
                     status: 'Doctoral Dissertation',
                     date: 'September 2000'
                 },
+                'content-negotiation' : {
+                    title: 'HTTP 1.1. Content Negotiation',
+                    href: 'http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html'
+                },
                 'QUTD': {
                     title: 'QUDT - Quantities, Units, Dimensions and Data Types Ontologies',
                     href: 'http://www.qudt.org/',
@@ -159,7 +163,7 @@
         </li>
     </ul>
     <p class="note">
-        While the Web Things Requirements are described with the HTTP and WebSockets protocols because these protocols are well supported on the Web of browsers, the Web Thing Model can also be applied to describe the models and interactions of Things supported via other RESTful protocols such as CoAP [[!RFC7252]] or even pub/sub protocols such as [[!MQTT]].</a>
+        While the Web Things Requirements are described with the HTTP and WebSockets protocols using JSON because they are well supported on the Web of browsers, the Web Thing Model can also be applied to describe the models and interactions of Things supported via other RESTful protocols such as CoAP [[!RFC7252]] or even pub/sub protocols such as [[!MQTT]].</a>
     </p>
     <figure id="wot-levels">
         <img src="wot-levels.png"
@@ -248,7 +252,7 @@
             In the most straightforward case, a <a>Web Thing</a> is simply a Web API that <a>Clients</a>
             send requests to. In some cases, the <a>Client</a> and the <a>Web Thing</a> can be on the same network or on
             different networks. In both cases, you are sending the same request to a <a>Web Thing</a>, the only
-            difference is the URL to which you are sending the request (and obviously how the lamp gets the message).
+            difference is the URL to which you are sending the request (and how the lamp gets the message).
         </p>
         <figure>
             <img src="integration-direct.png"
@@ -533,10 +537,7 @@
 
             <p>
                 A <a>Web Thing</a> MAY provide additional representations of its data and descriptions. JSON being the
-                only mandatory representation, the rest of the formats are up to the implementers if needed for additional purposes.
-            </p>
-            <p class="note">
-                Further specifications should describe how to enrich the data model defined in this document with semantic annotations.
+                only mandatory representation, the rest of the formats are up to the implementers if needed for additional purposes. The discovery of additional representation SHOULD be supported via HTTP content-negotiation [[!content-negotiation]].
             </p>
         </section>
 
@@ -564,9 +565,10 @@
 
     <p>
         This part defines the model, JSON payloads and REST API that an <a>Extended Web Thing</a> MUST implement to
-        allow <a>Clients</a> to discover and use its properties on an automated basis. It assumes an <a
+        allow <a>Clients</a> to automatically discover and use its properties. It assumes an <a
             href="#web-things-integration-pattern">Integration Pattern</a> and that the Web Thing follows the <a
-            href="#web-things-requirements">Web Things Requirements</a>.
+            href="#web-things-requirements">Web Things Requirements</a>. As such, the Web Things model is a contract
+        between clients and Things in the IoT.
     </p>
 
     <p class="note">
@@ -726,7 +728,7 @@
         </p>
 
         <h3>Pagination</h3>
-        Requests that on things of a gateway, on properties that store the history of value changes or on executed actions return many items will be paginated to 30 items by default. You can specify any further page to be returned using the ?page parameter. You can also set a custom page size up to 100 with the ?perPage parameter.
+        Requests on resource that may return a significant amount of data (e.g., Things of a gateway, properties that store the history of value changes, executed actions) SHOULD be paginated to 30 items by default. You can specify any further page to be returned using the ?page parameter. You can also set a custom page size up to 100 with the ?perPage parameter.
 
 
         <code>GET {wt}/properties/acceleration?page=3&amp;perPage=100</code>
