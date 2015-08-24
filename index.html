@@ -156,9 +156,6 @@
              width="800"/>
         <figcaption>Web Thing Model levels</figcaption>
     </figure>
-    <p class="note">
-      Semantic extensions are not covered by this specification. The data model defined in this specification may benefit from alignment with the vocabulary used in <a href="http://schema.org">schema.org</a>. It should also be easy to link the type of a value (see <a href="#values"></a>) to an ontology, for instance to units defined in the [[QUTD]] ontology.
-    </p>
 </section>
 
 <section id='conformance'>
@@ -1000,7 +997,7 @@
             <tr>
                 <td><code>unit</code></td>
                 <td>String</td>
-                <td>The unit of this value, using one of the full names defined in the International System of Units
+                <td>The unit of this value using one the (case-insensitive) full names defined in the International System of Units
                     [[!SI]].
                     <br/>Example: <code>"meter per second squared"</code></td>
             </tr>
@@ -2058,6 +2055,29 @@
                 </section>
             </section>
         </section>
+    <section>
+        <h2>Semantic Extensions</h2>
+        While it defines a basic semantic for Things in the IoT, the data model defined in this specification benefits from alignment with more detailed vocabularies such as those used in <a href="http://schema.org">schema.org</a>. The support for semantic extensions SHOULD be implemented using JSON-LD by referencing a JSON-LD context via an HTTP Link Header.
+            <pre class="example">
+                GET /model HTTP/1.1
+                Host: mydevice.webofthings.org
+                Accept: application/json,application/ld+json,*/*;q=0.1
+
+                ====================================
+
+                HTTP/1.1 200 OK
+                ...
+                Content-Type: <span class="highlight">application/json</span>
+                <span class="highlight">Link: &lt;https://schema.org/Product&gt;; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"</span>
+
+                {
+                    "name": "Beaglebone Black",
+                    "description": "A Beaglebone Black embedded device",
+                    "productID" : "asin:B00CO3MZCW",
+                    "manufacturer" : "Beagleboard", ...
+                }
+            </pre>
+    </section>
     </section>
 
 
@@ -2072,7 +2092,7 @@
 
         <p>
             The authors would like to thank the participants of the <a href="http://www.w3.org/WoT/IG/">W3C Web of
-            Things Interest Group</a>, the <a href="http://www.webofthings.org">Web of Things online community</a> and in particular Joel Vogt and Iker Larizgoitia Abad, who have provided feedback on the drafts of this submission.
+            Things Interest Group</a>, the <a href="http://www.webofthings.org">Web of Things online community</a> and in particular Joel Vogt and Iker Larizgoitia Abad, Francois Daoust, Johannes Hund and Joerg Heuer who have provided very valuable feedback on the drafts of this submission.
         </p>
     </section>
         </section>
