@@ -522,7 +522,7 @@
         </section>
 
         <section>
-            <h2>R2.2 – A <a>Web Thing</a> MAY provide additional representation mechanisms (RDF, XML, JSON-LD)</h2>
+            <h2>R2.3 – A <a>Web Thing</a> MAY provide additional representation mechanisms (RDF, XML, JSON-LD)</h2>
 
             <p>
                 A <a>Web Thing</a> MAY provide additional representations of its data and descriptions. JSON being the
@@ -534,7 +534,7 @@
         </section>
 
         <section>
-            <h2>R2.3 – A <a>Web Thing</a> MAY offer a HTML-based user interface</h2>
+            <h2>R2.4 – A <a>Web Thing</a> MAY offer a HTML-based user interface</h2>
             <p>
                 A <a>Web Thing</a> MAY expose a  <abbr
                     title="User Interface">UI</abbr> in HTML, CSS and JavaScript. For example, the <abbr
@@ -543,7 +543,7 @@
             </p>
         </section>
         <section>
-            <h2>R2.4 – A <a>Web Thing</a> MAY provide precise information about the intended meaning of individual parts of the model</h2>
+            <h2>R2.5 – A <a>Web Thing</a> MAY provide precise information about the intended meaning of individual parts of the model</h2>
 
             <p>
                 A <a>Web Thing</a> MAY provide additional meta data to precisely describe the meaning of individual building blocks of a model in a machine-understandable way.
