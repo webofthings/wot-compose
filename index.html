@@ -64,6 +64,10 @@
                     ],
                     date: 'March 18, 2014'
                 },
+                'JSONLD': {
+                    title: 'JSON-LD - Interpreting JSON as JSON-LD',
+                    href: 'http://www.w3.org/TR/json-ld/#interpreting-json-as-json-ld',
+                },
                 'SI': {
                     title: 'International System of Units (SI)',
                     href: 'http://physics.nist.gov/cuu/Units/units.html'
@@ -1328,7 +1332,7 @@
             "h": {
               "name": "Humidity",
               "description": "Percentage of Humidity",
-              "unit": "%",
+              "unit": "percent",
               "customFields": {
                 "gpio": 21
               }
@@ -2057,7 +2061,7 @@
         </section>
     <section>
         <h2>Semantic Extensions</h2>
-        While it defines a basic semantic for Things in the IoT, the data model defined in this specification benefits from alignment with more detailed vocabularies such as those used in <a href="http://schema.org">schema.org</a>. The support for semantic extensions SHOULD be implemented using JSON-LD by referencing a JSON-LD context via an HTTP Link Header.
+        While it defines a basic semantic for Things in the IoT, the data model defined in this specification benefits from alignment with more detailed vocabularies such as those used in <a href="http://schema.org">schema.org</a>. The support for semantic extensions SHOULD be implemented using JSON-LD by referencing a JSON-LD context via an HTTP Link Header using the using the http://www.w3.org/ns/json-ld#context link relation as defined in [[!JSONLD]].
             <pre class="example">
                 GET /model HTTP/1.1
                 Host: mydevice.webofthings.org
