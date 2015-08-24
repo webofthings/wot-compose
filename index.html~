@@ -68,10 +68,6 @@
                     title: 'JSON-LD - Interpreting JSON as JSON-LD',
                     href: 'http://www.w3.org/TR/json-ld/#interpreting-json-as-json-ld',
                 },
-                'MQTT': {
-                    title: 'MQTT Version 3.1.1',
-                    href: 'http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html',
-                },
                 'SI': {
                     title: 'International System of Units (SI)',
                     href: 'http://physics.nist.gov/cuu/Units/units.html'
@@ -130,8 +126,8 @@
 
     <p>
         The following guidelines and recommendations aim at ensuring interoperability across all entities on the Web of
-        Things. Unlike custom (non-Web) protocols used for machine-to-machine communications that create a
-        “parallel universe” to the existing Web; the Web of Things is designed to be seamlessly
+        Things. Unlike other custom (non-Web) protocols used for machine-to-machine communications that create a
+        “parallel universe” to the existing Web; the Web of Things as described here is designed to be seamlessly
         integrated to the existing Web so it can fully leverage its infrastructure and standards to minimize
         integrations across applications and systems.
     </p>
@@ -155,17 +151,14 @@
             capable to read and exchange data with any other entities of the Web of Things. However, it does not mean it
             can “understand” what the object is, what data or services it offers, etc. Therefore, the third component
             of this specification proposes RESTful Web protocol with a set of resources, data models and payload syntax that Web Thing and applications should follow. Respecting these requirements turns a Web
-            Thing into an Extended Web Thing. Implementing semantic extensions (e.g., via [[!JSON-LD]] and <a href="http://schema.org">schema.org</a>) turns the Extended Web Thing into a Semantic Web Thing.
+            Thing into an Extended Web Thing. Implementing semantic extensions (e.g., via [[JSON-LD]] and <a href="http://schema.org">schema.org</a>) turns the Extended Web Thing into a Semantic Web Thing.
         </li>
     </ul>
-    <p class="note">
-        While the Web Things Requirements are described with the HTTP and WebSockets protocols because these protocols are well supported on the Web of browsers, the Web Thing Model can also be applied to describe the models and interactions of Things supported via other RESTful protocols such as CoAP [[!RFC7252]] or even pub/sub protocols such as [[!MQTT]].</a>
-    </p>
     <figure id="wot-levels">
         <img src="wot-levels.png"
              alt="Web Thing Model levels build on top of each other, from a Web Thing that implement the requirements to the Extended Web Thing and Semantic Web Thing"
-             width="770"/>
-        <figcaption>Web Thing Model levels (source: [[WoTBook]])</figcaption>
+             width="800"/>
+        <figcaption>Web Thing Model levels</figcaption>
     </figure>
 </section>
 
@@ -226,7 +219,7 @@
     <p>
         This part looks into the different ways of integrating physical objects to the Web to make them <a>Web Things</a>. Once a pattern has been choosen, the server of a <a>Web Thing</a> should
         follow the <a href="#web-things-requirements">Web Things Requirements</a> and the resources and payloads it uses
-        should follow the <a href="#web-things-model">Web Things Model </a>.
+        should follow the <a href="#web-things-model">Web Things Model</a>.
     </p>
 
     <p>
@@ -529,7 +522,7 @@
         </section>
 
         <section>
-            <h2>R2.2 – A <a>Web Thing</a> MAY provide additional representation mechanisms (RDF, XML, JSON-LD)</h2>
+            <h2>R2.3 – A <a>Web Thing</a> MAY provide additional representation mechanisms (RDF, XML, JSON-LD)</h2>
 
             <p>
                 A <a>Web Thing</a> MAY provide additional representations of its data and descriptions. JSON being the
@@ -541,7 +534,7 @@
         </section>
 
         <section>
-            <h2>R2.3 – A <a>Web Thing</a> MAY offer a HTML-based user interface</h2>
+            <h2>R2.4 – A <a>Web Thing</a> MAY offer a HTML-based user interface</h2>
             <p>
                 A <a>Web Thing</a> MAY expose a  <abbr
                     title="User Interface">UI</abbr> in HTML, CSS and JavaScript. For example, the <abbr
@@ -550,7 +543,7 @@
             </p>
         </section>
         <section>
-            <h2>R2.4 – A <a>Web Thing</a> MAY provide precise information about the intended meaning of individual parts of the model</h2>
+            <h2>R2.5 – A <a>Web Thing</a> MAY provide precise information about the intended meaning of individual parts of the model</h2>
 
             <p>
                 A <a>Web Thing</a> MAY provide additional meta data to precisely describe the meaning of individual building blocks of a model in a machine-understandable way.
@@ -2090,6 +2083,8 @@
     </section>
     </section>
 
+
+
     <section>
         <h1>Acknowledgments</h1>
 
@@ -2103,10 +2098,6 @@
             Things Interest Group</a>, the <a href="http://www.webofthings.org">Web of Things online community</a> and in particular Joel Vogt and Iker Larizgoitia Abad, Francois Daoust, Johannes Hund and Joerg Heuer who have provided very valuable feedback on the drafts of this submission.
         </p>
     </section>
-
-<p class="note">
-    Further tools and examples to work with this specification are available on <a href="http://webofthings.org/specifications">Web of Things online community Website.</a>
-</p>
         </section>
     </section>
 </body>
